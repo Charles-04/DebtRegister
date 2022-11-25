@@ -4,12 +4,12 @@ namespace DebtRegister
 {
     internal class Debtor
     {
-        
+
         internal string FirstName { get; set; }
-        internal string LastName { get; set; } 
+        internal string LastName { get; set; }
         internal InstallmentPlan InstallmentPlan { get; set; }
-        internal double Debt { get; set; }  
-        internal double Installment { get; set;}
+        internal double Debt { get; set; }
+        internal double Installment { get; set; }
         internal double DebtRemnant { get; set; }
         internal DateTime CreatedAt { get; set; }
         internal DateTime NextRepaymentDate { get; set; }
@@ -17,7 +17,7 @@ namespace DebtRegister
         internal int RepaymentTimes { get; set; }
         public Debtor()
         {
-                
+
         }
 
         internal Debtor CollectDebtorDetails()
@@ -59,7 +59,7 @@ namespace DebtRegister
             Console.WriteLine($"{debtor.FirstName} has succesfully activated {debtor.InstallmentPlan} installment Payment Plan For {debtor.GoodsDescription}");
 
             return debtor;
-            
+
         }
         public static InstallmentPlan? GetPlan(int plan)
         {
@@ -67,38 +67,38 @@ namespace DebtRegister
             {
                 case 1:
                     return InstallmentPlan.Daily;
-                    
+
                 case 2:
                     return InstallmentPlan.Weekly;
-                 
+
                 case 3:
                     return InstallmentPlan.BiWeekly;
-                  
+
                 case 4:
                     return InstallmentPlan.Monthly;
-                   
+
                 case 5:
                     return InstallmentPlan.SemiAnnual;
-                   
+
                 case 6:
                     return InstallmentPlan.Annual;
-                    
+
                 default:
                     return null;
-                   
+
             }
         }
-        
+
     }
     public enum InstallmentPlan
-        {
-            Daily = 1,
-            Weekly = 2,
-            BiWeekly = 3,
-            Monthly = 4,
-            SemiAnnual = 5,
-            Annual = 6
+    {
+        Daily = 1,
+        Weekly = 2,
+        BiWeekly = 3,
+        Monthly = 4,
+        SemiAnnual = 5,
+        Annual = 6
 
-        }
-    
+    }
+
 }

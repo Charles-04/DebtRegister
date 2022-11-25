@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DebtRegister
+﻿namespace DebtRegister
 {
     internal class DebtRegister
     {
         Debtor debtor = new();
         List<Debtor> debtorList = new();
-       internal void Init()
+        internal void Init()
         {
             try
             {
@@ -50,9 +44,9 @@ namespace DebtRegister
 
                 throw;
             }
-            
+
         }
-        internal Debtor ? GetDebtor()
+        internal Debtor? GetDebtor()
         {
             Console.WriteLine("Enter Debtor's First Name");
             string firstName = Console.ReadLine().ToLower();
@@ -101,7 +95,7 @@ namespace DebtRegister
                     default:
                         break;
                 }
-                
+
                 debtor.DebtRemnant -= debtor.Installment;
                 debtor.RepaymentTimes += 1;
                 Console.WriteLine($"Congrats {debtor.LastName} {debtor.FirstName}, you've made an installmental payment of {debtor.Installment} for {debtor.GoodsDescription}. \n Your Debt remains : {debtor.DebtRemnant}");
@@ -113,14 +107,15 @@ namespace DebtRegister
         }
         internal void DisplayDebtors()
         {
-            
+
             for (int i = 0; i < debtorList.Count; i++)
             {
                 Debtor debtor = debtorList[i];
                 if (debtor.RepaymentTimes >= 3)
                 {
                     continue;
-                }else if(debtorList.Count == 0)
+                }
+                else if (debtorList.Count == 0)
                 {
                     Console.WriteLine("Omo, You no get debtors");
                 }

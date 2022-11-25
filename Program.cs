@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-           DebtRegister debtRegister = new DebtRegister();
+            DebtRegister debtRegister = new DebtRegister();
             debtRegister.Init();
         }
     }
