@@ -8,8 +8,8 @@
         {
             try
             {
-                Console.WriteLine("Welcome to Buhari's Debt Register \n What do you want to do?");
-                Console.WriteLine($"\n 1 : Add new \n 2 : View Debtors \n 3 : Update Payment \n 4 : Quit");
+                Console.WriteLine("\nWelcome to Buhari's Debt Register \n What do you want to do?");
+                Console.WriteLine($"\n 1 : Add new Debtor \n 2 : View Debtors \n 3 : Update Payment \n 4 : Quit");
                 int option = int.Parse(Console.ReadLine());
 
                 switch (option)
@@ -35,14 +35,16 @@
                         Environment.Exit(0000);
                         break;
                     default:
+                        Console.WriteLine("Invalid Option");
+                        Init();
                         break;
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                Console.WriteLine(e.Message); 
+                Init();
             }
 
         }
@@ -98,7 +100,8 @@
 
                 debtor.DebtRemnant -= debtor.Installment;
                 debtor.RepaymentTimes += 1;
-                Console.WriteLine($"Congrats {debtor.LastName} {debtor.FirstName}, you've made an installmental payment of {debtor.Installment} for {debtor.GoodsDescription}. \n Your Debt remains : {debtor.DebtRemnant}");
+                Console.WriteLine($"Congrats {debtor.LastName} {debtor.FirstName}, you've made an installmental payment of {debtor.Installment} for {debtor.GoodsDescription}." +
+                    $" \n Your Debt remains : {debtor.DebtRemnant} \n Next Repayment date : {debtor.NextRepaymentDate}");
             }
             else
             {
@@ -113,6 +116,7 @@
                 Debtor debtor = debtorList[i];
                 if (debtor.RepaymentTimes >= 3)
                 {
+                    debtorList.Remove(debtor);
                     continue;
                 }
                 else if (debtorList.Count == 0)

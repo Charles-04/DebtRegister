@@ -54,6 +54,8 @@ namespace DebtRegister
             {
 
                 Console.WriteLine(ex.Message);
+                CollectDebtorDetails();
+
             }
 
             Console.WriteLine($"{debtor.FirstName} has succesfully activated {debtor.InstallmentPlan} installment Payment Plan For {debtor.GoodsDescription}");
