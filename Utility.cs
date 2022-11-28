@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DebtRegister
+﻿namespace DebtRegister
 {
-    internal  class Utility
+    internal class Utility
     {
-       public bool NullValidator(string input,string message)
+        public bool NullValidator(string input, string message)
         {
 
-            if (string.IsNullOrEmpty(input))
+            if (string.IsNullOrWhiteSpace(input) && string.IsNullOrEmpty(input))
             {
                 Exception ex = new();
                 throw new NullException(message, ex);
-                return false;
+                return true;
 
             }
             else
             {
-                return true;
+                return false;
             }
 
         }

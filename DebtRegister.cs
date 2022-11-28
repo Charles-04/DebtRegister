@@ -4,6 +4,7 @@
     {
         Debtor debtor = new();
         List<Debtor> debtorList = new();
+        Debtor _returnedDebtor;
         internal void Init()
         {
             try
@@ -17,8 +18,9 @@
                     case 1:
                         Console.Clear();
                         Console.WriteLine("Add New Debtor");
-                        debtorList.Add(debtor.CollectDebtorDetails());
-                        Init();
+                        AddNewDebtor();
+
+
                         break;
                     case 2:
                         Console.Clear();
@@ -43,35 +45,56 @@
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message); 
+                Console.WriteLine(e.Message);
                 Init();
             }
 
         }
-        internal Debtor? GetDebtor()
+        private void AddNewDebtor()
+        {
+            //expect debtor object;
+            debtor.CollectDebtorDetails();
+
+
+            if (debtor._newDebtor != null)
+            {
+                debtorList.Add(debtor._newDebtor);
+                Init();
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Object was null");
+                Console.WriteLine("Add New Debtor");
+                AddNewDebtor();
+            }
+        }
+        internal void GetDebtor()
         {
             Console.WriteLine("Enter Debtor's First Name");
             string firstName = Console.ReadLine().ToLower();
             Console.WriteLine("Enter Debtor's Last Name");
             string lastName = Console.ReadLine().ToLower();
-            Debtor currentDebtor = null;
-            for (int i = 0; i < debtorList.Count; i++)
+
+            foreach (var currentDebtor1 in debtorList)
             {
-                if (debtorList[i].LastName.ToLower() == lastName && debtorList[i].FirstName.ToLower() == firstName)
+                if (currentDebtor1.LastName.ToLower() == lastName && currentDebtor1.FirstName.ToLower() == firstName)
                 {
-                    currentDebtor = debtorList[i];
+                    _returnedDebtor = currentDebtor1;
                 }
                 else
                 {
-                    return null;
+                    //return null;
                 }
             }
-            return currentDebtor;
+
         }
         internal void UpdatePayment()
         {
             Console.WriteLine("Update Debt Payment");
-            Debtor debtor = GetDebtor();
+
+            GetDebtor();
+            Debtor debtor = _returnedDebtor;
             if (debtor != null && debtor.RepaymentTimes < (int)EnumClass.CommonNumbers.InstallmentSpan)
             {
                 switch (debtor.InstallmentPlan)
@@ -116,7 +139,7 @@
                 Debtor debtor = debtorList[i];
                 if (debtor.RepaymentTimes >= 3)
                 {
-                    debtorList.Remove(debtor);
+
                     continue;
                 }
                 else if (debtorList.Count == 0)
