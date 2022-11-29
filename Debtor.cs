@@ -7,6 +7,7 @@ namespace DebtRegister
         internal Debtor _newDebtor;
         internal string FirstName { get; set; }
         internal string LastName { get; set; }
+        internal string Id { get; set; }
         internal InstallmentPlan InstallmentPlan { get; set; }
         internal double Debt { get; set; }
         internal double Installment { get; set; }

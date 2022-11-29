@@ -4,7 +4,7 @@
     {
         Debtor debtor = new();
         List<Debtor> debtorList = new();
-        Debtor _returnedDebtor;
+        Debtor ?_returnedDebtor;
         internal void Init()
         {
             try
@@ -58,6 +58,7 @@
 
             if (debtor._newDebtor != null)
             {
+                debtor._newDebtor.Id = "DB" + debtorList.Count + 1;
                 debtorList.Add(debtor._newDebtor);
                 Init();
                 return;
@@ -71,20 +72,23 @@
         }
         internal void GetDebtor()
         {
-            Console.WriteLine("Enter Debtor's First Name");
-            string firstName = Console.ReadLine().ToLower();
-            Console.WriteLine("Enter Debtor's Last Name");
-            string lastName = Console.ReadLine().ToLower();
-
+            /* Console.WriteLine("Enter Debtor's First Name");
+             string firstName = Console.ReadLine().ToLower();
+             Console.WriteLine("Enter Debtor's Last Name");
+             string lastName = Console.ReadLine().ToLower();
+             Console.WriteLine("");
+            */
+            Console.WriteLine("Enter Debtor ID");
+            string id = Console.ReadLine().Trim().ToLower();
             foreach (var currentDebtor1 in debtorList)
             {
-                if (currentDebtor1.LastName.ToLower() == lastName && currentDebtor1.FirstName.ToLower() == firstName)
+                /*if (currentDebtor1.LastName.ToLower() == lastName && currentDebtor1.FirstName.ToLower() == firstName)
                 {
                     _returnedDebtor = currentDebtor1;
-                }
-                else
+                }*/
+                if (id == currentDebtor1.Id.ToLower())
                 {
-                    //return null;
+                    _returnedDebtor = currentDebtor1;
                 }
             }
 
@@ -150,10 +154,12 @@
                 {
                     Console.WriteLine($"\n Debtor {i + 1} Info \n");
                     Console.WriteLine($"Name : {debtor.LastName} {debtor.FirstName}");
-                    Console.WriteLine($"Debt Amount : {debtor.Debt}");
+                    Console.WriteLine($"Id : {debtor.Id}");
+                    Console.WriteLine($"Total Debt Amount : {debtor.Debt}");
                     Console.WriteLine($"Installment Amount : {debtor.Installment}");
                     Console.WriteLine($"Debt Remains : {debtor.DebtRemnant}");
                     Console.WriteLine($"Repayment times : {debtor.RepaymentTimes}");
+                   
                 }
 
             }

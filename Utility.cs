@@ -9,7 +9,7 @@
             {
                 Exception ex = new();
                 throw new NullException(message, ex);
-                return true;
+               // return true;
 
             }
             else
