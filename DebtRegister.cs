@@ -72,20 +72,11 @@
         }
         internal void GetDebtor()
         {
-            /* Console.WriteLine("Enter Debtor's First Name");
-             string firstName = Console.ReadLine().ToLower();
-             Console.WriteLine("Enter Debtor's Last Name");
-             string lastName = Console.ReadLine().ToLower();
-             Console.WriteLine("");
-            */
+            
             Console.WriteLine("Enter Debtor ID");
             string id = Console.ReadLine().Trim().ToLower();
             foreach (var currentDebtor1 in debtorList)
             {
-                /*if (currentDebtor1.LastName.ToLower() == lastName && currentDebtor1.FirstName.ToLower() == firstName)
-                {
-                    _returnedDebtor = currentDebtor1;
-                }*/
                 if (id == currentDebtor1.Id.ToLower())
                 {
                     _returnedDebtor = currentDebtor1;

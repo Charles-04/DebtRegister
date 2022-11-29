@@ -43,9 +43,14 @@ namespace DebtRegister
                 bool isDescriptionNull = utility.NullValidator(description, "Goods Description can't be empty");
                 Console.WriteLine("Enter Total amount of Debt");
                 double amount = double.Parse(Console.ReadLine());
+                if (amount <= 0)
+                {
+                    Console.WriteLine("Invalid amount");
+                    Console.WriteLine("Enter Total amount of Debt");
+                    amount = double.Parse(Console.ReadLine());
+                }
 
-
-                if (isFirstNameNull == false && isLastNameNull == false && isDescriptionNull == false)
+                if (isFirstNameNull == false && isLastNameNull == false && isDescriptionNull == false )
                 {
 
                     debtor.FirstName = firstName;
