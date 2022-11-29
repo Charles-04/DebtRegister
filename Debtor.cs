@@ -58,7 +58,7 @@ namespace DebtRegister
                     debtor.InstallmentPlan = (InstallmentPlan)GetPlan(plan);
                     debtor.Debt = amount;
                     debtor.DebtRemnant = amount;
-                    debtor.Installment = Math.Round(amount / 3);
+                    debtor.Installment = Math.Round(amount / (int)EnumClass.CommonNumbers.InstallmentSpan));
                     debtor.CreatedAt = DateTime.Now;
                     debtor.GoodsDescription = description;
                     Console.WriteLine($"{debtor.FirstName} has succesfully activated {debtor.InstallmentPlan} installment Payment Plan For {debtor.GoodsDescription}");

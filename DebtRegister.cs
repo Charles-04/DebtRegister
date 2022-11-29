@@ -34,6 +34,7 @@
                         Init();
                         break;
                     case 4:
+                        Console.WriteLine("Thanks for using our services");
                         Environment.Exit(0000);
                         break;
                     default:
@@ -52,7 +53,7 @@
         }
         private void AddNewDebtor()
         {
-            //expect debtor object;
+      
             debtor.CollectDebtorDetails();
 
 
@@ -132,7 +133,7 @@
             for (int i = 0; i < debtorList.Count; i++)
             {
                 Debtor debtor = debtorList[i];
-                if (debtor.RepaymentTimes >= 3)
+                if (debtor.RepaymentTimes >= (int)EnumClass.CommonNumbers.InstallmentSpan)
                 {
 
                     continue;
